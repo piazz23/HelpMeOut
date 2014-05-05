@@ -33,7 +33,6 @@ public class MainActivity extends Activity {
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-
     }
 
 
@@ -88,7 +87,7 @@ public class MainActivity extends Activity {
                 case 0:
                     return VideoFragment.FRAGMENT_TITLE.toUpperCase(l);
                 case 1:
-                    return getString(R.string.title_section2).toUpperCase(l);
+                    return MessagesFragment.FRAGMENT_TITLE.toUpperCase(l);
             }
             return null;
         }

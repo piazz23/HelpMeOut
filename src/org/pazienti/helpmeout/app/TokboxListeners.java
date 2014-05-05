@@ -108,6 +108,8 @@ public class TokboxListeners implements Session.Listener, Publisher.Listener, Su
 	@Override
 	public void error(Session session, OpentokError e) {
 		Log.e(TAG, e.getMessage());	
+		Log.e(TAG, String.valueOf(e.getErrorCode()));
+		e.getErrorDomain();
 	}
 
 	@Override

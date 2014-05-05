@@ -12,6 +12,9 @@ public class HelpMeOut extends Application{
 	public static final String TOKBOX_TOKEN 			= "T1==cGFydG5lcl9pZD0yOTUyOTM1MiZzZGtfdmVyc2lvbj10YnJ1YnktdGJyYi12MC45MS4yMDExLTAyLTE3JnNpZz04MGM1M2ZmYWU2Y2I2NDk4NGQ3NGVlNDUyZjYzYWZlODE4M2UyOGZlOnJvbGU9cHVibGlzaGVyJnNlc3Npb25faWQ9MV9NWDR5T1RVeU9UTTFNbjUtVTNWdUlFMWhlU0F3TkNBeE5Ub3lOam95TWlCUVJGUWdNakF4Tkg0d0xqUTVPRFEyT0RrMGZuNCZjcmVhdGVfdGltZT0xMzk5MjQyNDE2Jm5vbmNlPTAuOTUwMjQ5OTIxMzMyNjUmZXhwaXJlX3RpbWU9MTQwMTgzNDQxMSZjb25uZWN0aW9uX2RhdGE9"; 
 	public static final String TOKBOX_API_KEY			= "29529352";
 	
+	// APP CONSTANTS
+	public static final boolean SUBSCRIBE_TO_SELF = true;
+	
 	@Override
 	public void onCreate() {
 		super.onCreate();
