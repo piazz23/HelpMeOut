@@ -39,7 +39,8 @@
 	        android:ems="10"
 	        android:gravity="center"
 	        android:hint="@string/login_code_text_hint"
-	        android:textColorHint="@android:color/white" />        
+	        android:textColorHint="@android:color/white"
+	        android:textColor="@android:color/white" />        
         
     </RelativeLayout>
     
