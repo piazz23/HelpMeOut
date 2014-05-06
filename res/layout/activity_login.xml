@@ -17,19 +17,19 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:padding="@dimen/activity_vertical_margin" >
 
         <Button
+            style="@style/PazientiOrangeButton"
             android:id="@+id/cmdLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txtLoginCode"
             android:layout_centerHorizontal="true"
-            android:text="@string/login_button_label"
-            android:textColor="@android:color/white" />
+            android:text="@string/login_button_label" />
 
         <EditText
             android:id="@+id/txtLoginCode"
@@ -37,7 +37,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="163dp"
             android:ems="10"
             android:gravity="center"
             android:hint="@string/login_code_text_hint"
