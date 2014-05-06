@@ -9,7 +9,7 @@
     <string name="txt_video_loading_label">Caricamento in corso...</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="hello_world">Hello world!</string>
-    <string name="login_button_label">Login</string>
-    <string name="login_code_text_hint">Inserisci il codice</string>
+    <string name="login_button_label">Start now!</string>
+    <string name="login_code_text_hint">Your pincode</string>
 
 </resources>
