@@ -6,46 +6,47 @@
     tools:context="org.pazienti.helpmeout.activities.LoginActivity"
      >
 
-    <!-- <ImageView
+    <ImageView
         android:id="@+id/login_layout_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:scaleType="fitXY"
-        android:src="@drawable/bg_pazienti"  android:contentDescription="TODO"/> -->
+        android:src="@drawable/bg_pazienti" />
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="144dp"
-        android:padding="@dimen/activity_vertical_margin" >
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:paddingLeft="@dimen/activity_vertical_margin"
+        android:paddingRight="@dimen/activity_vertical_margin" >
 
-        <Button
-            android:id="@+id/cmdLogin"
-            style="@style/PazientiOrangeButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txtLoginCode"
-            android:layout_centerHorizontal="true"
-            android:text="@string/login_button_label" />
+		<Button
+		    android:id="@+id/cmdLogin"
+		    style="@style/PazientiOrangeButton"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_alignLeft="@+id/txtLoginCode"
+		    android:layout_centerVertical="true"
+		    android:layout_marginTop="10dp"
+		    android:text="@string/login_button_label"
+		     />
 
-        <EditText
-            android:id="@+id/txtLoginCode"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="@string/login_code_text_hint"
-            android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white" >
+		<EditText
+		    android:id="@+id/txtLoginCode"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_above="@+id/cmdLogin"
+		    android:layout_centerHorizontal="true"
+		    android:ems="10"
+		    android:gravity="center"
+		    android:hint="@string/login_code_text_hint"
+		    android:textColor="@android:color/white"
+		    android:textColorHint="@android:color/white" />
 
-            <requestFocus />
-        </EditText>
     </RelativeLayout>
 
 </RelativeLayout>
