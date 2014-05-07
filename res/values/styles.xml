@@ -17,7 +17,7 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
     
-    <style name="PazientiOrangeButton">
+   <style name="PazientiOrangeButton">
         <item name="android:background">@drawable/btn_pazienti_orange</item>
         <item name="android:textColor">@android:color/white</item>
     </style>

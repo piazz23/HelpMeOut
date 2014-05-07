@@ -6,14 +6,14 @@
     tools:context="org.pazienti.helpmeout.activities.LoginActivity"
      >
 
-    <ImageView
+    <!-- <ImageView
         android:id="@+id/login_layout_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:scaleType="fitXY"
-        android:src="@drawable/bg_pazienti" />
+        android:src="@drawable/bg_pazienti"  android:contentDescription="TODO"/> -->
 
     <RelativeLayout
         android:layout_width="match_parent"
