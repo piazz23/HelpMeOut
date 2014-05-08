@@ -26,7 +26,7 @@ public class API extends AsyncTask<Object, Void, JSONObject>{
 	}
 	
 	/* Method to add error to API request*/
-	protected void raiseAPIError(Exception e) {
+	protected void raiseRequestError(Exception e) {
 		mThrowedExceptions.add(e);
 	}
 	/* Method to initialize and reset the API request attributes */
@@ -57,9 +57,9 @@ public class API extends AsyncTask<Object, Void, JSONObject>{
 				response = new JSONObject(new String(byteResponse));
 			}
 		} catch (IOException e) {
-			raiseAPIError(e);
+			raiseRequestError(e);
 		} catch (JSONException e) {
-			raiseAPIError(e);
+			raiseRequestError(e);
 		}
 		
 		return response;

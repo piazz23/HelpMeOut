@@ -28,9 +28,9 @@ public class VideoConsultation extends API{
 			
 			execute(connection);
 		} catch (MalformedURLException e) {
-			raiseAPIError(e);
+			raiseRequestError(e);
 		} catch (IOException e) {
-			raiseAPIError(e);
+			raiseRequestError(e);
 		}		
 	}	
 }
