@@ -2,6 +2,7 @@ package org.pazienti.helpmeout.fragments;
 
 import org.pazienti.helpmeout.R;
 import org.pazienti.helpmeout.activities.LoginActivity;
+import org.pazienti.helpmeout.app.HelpMeOut;
 import org.pazienti.helpmeout.app.TokboxHandler;
 
 import android.app.Fragment;
@@ -22,7 +23,8 @@ public class VideoFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_video, container, false);
         
-        if(true){
+        
+        if(!getActivity().getIntent().getBooleanExtra(HelpMeOut.FLAG_EXTRA_ACCESS_DONE, false)){
         	Intent intent = new Intent(getActivity(), LoginActivity.class);
         	intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         	
@@ -35,10 +37,10 @@ public class VideoFragment extends Fragment{
 	@Override
 	public void onResume() {
 		super.onResume();
-        
-		if(tokbox == null){
+		
+		if(tokbox == null && getActivity().getIntent().getBooleanExtra(HelpMeOut.FLAG_EXTRA_ACCESS_DONE, false)){
 			tokbox = new TokboxHandler(getActivity());
-		}else if(tokbox.getSession() != null){
+		}else if(tokbox != null && tokbox.getSession() != null){
 			tokbox.getSession().onResume();
 		}
 	}

@@ -34,7 +34,7 @@ public final class R {
     }
     public static final class id {
         public static final int action_settings=0x7f08000b;
-        public static final int cmdLogin=0x7f080002;
+        public static final int cmd_login=0x7f080002;
         public static final int fragment_video=0x7f080005;
         public static final int login_layout=0x7f080000;
         public static final int login_layout_background=0x7f080001;
@@ -42,7 +42,7 @@ public final class R {
         public static final int progressBar1=0x7f080009;
         public static final int publisher_view=0x7f080007;
         public static final int subscriber_view=0x7f080006;
-        public static final int txtLoginCode=0x7f080003;
+        public static final int txt_login_code=0x7f080003;
         public static final int txt_video_loading=0x7f08000a;
         public static final int video_loading_view=0x7f080008;
     }

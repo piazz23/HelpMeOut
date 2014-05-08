@@ -11,6 +11,6 @@
     <item android:state_enabled="true" android:drawable="@drawable/btn_orange_normal" />
     
     <item android:state_focused="true" android:drawable="@drawable/btn_orange_disable" />
-    
+   
     <item android:drawable="@drawable/btn_orange_normal" />
 </selector>
