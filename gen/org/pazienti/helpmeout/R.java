@@ -29,7 +29,8 @@ public final class R {
         public static final int btn_orange_normal=0x7f020002;
         public static final int btn_orange_pressed=0x7f020003;
         public static final int btn_pazienti_orange=0x7f020004;
-        public static final int ic_launcher=0x7f020005;
+        public static final int et_pazienti_white=0x7f020005;
+        public static final int ic_launcher=0x7f020006;
     }
     public static final class id {
         public static final int action_settings=0x7f08000b;
@@ -94,5 +95,6 @@ public final class R {
          */
         public static final int AppTheme=0x7f060001;
         public static final int PazientiOrangeButton=0x7f060002;
+        public static final int PazientiWhiteEditText=0x7f060003;
     }
 }

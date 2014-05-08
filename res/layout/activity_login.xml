@@ -37,6 +37,7 @@
 
 		<EditText
 		    android:id="@+id/txtLoginCode"
+		    style="@style/PazientiWhiteEditText"
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
 		    android:layout_above="@+id/cmdLogin"
@@ -44,8 +45,7 @@
 		    android:ems="10"
 		    android:gravity="center"
 		    android:hint="@string/login_code_text_hint"
-		    android:textColor="@android:color/white"
-		    android:textColorHint="@android:color/white" />
+		     />
 
     </RelativeLayout>
 
