@@ -1,8 +1,10 @@
 package org.pazienti.helpmeout.activities;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
+import java.net.HttpURLConnection;
+import java.net.URLConnection;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.pazienti.helpmeout.R;
 import org.pazienti.helpmeout.api.APICallbackListener;
@@ -13,6 +15,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -20,6 +23,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class LoginActivity extends Activity {
+	// CLASS INFO
+	public static final String TAG = LoginActivity.class.getSimpleName();
+	
 	// VIEW COMPONENTS
 	protected EditText mTxtLoginCode;
 	protected Button mCmdLogin;
@@ -36,19 +42,29 @@ public class LoginActivity extends Activity {
 	View.OnClickListener cmdLoginOnCLickListener = new View.OnClickListener() {
 		@Override
 		public void onClick(View v) {
-			VideoConsultation api = new VideoConsultation();
-			
-			api.connectToSession(mTxtLoginCode.getText().toString(), new APICallbackListener() {
+			VideoConsultation api = new VideoConsultation(new APICallbackListener() {
 				@Override
-				public void onSuccess(JSONObject result) {
+				public void onSuccess(JSONObject result) {					
 					InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
 					imm.hideSoftInputFromWindow(mTxtLoginCode.getWindowToken(), 0);
 					
-					Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-					intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-					intent.putExtra(HelpMeOut.FLAG_EXTRA_ACCESS_DONE, true);
-					
-					startActivity(intent);
+					try {
+						String sessionId 	= result.getString(VideoConsultation.SESSION_ID);
+						String token 		= result.getString(VideoConsultation.TOKEN);
+						String videoApiKey 	= result.getString(VideoConsultation.VIDEO_API_KEY);
+						
+						Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+						intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+						
+						intent.putExtra(HelpMeOut.FLAG_EXTRA_ACCESS_DONE, true);
+						intent.putExtra(VideoConsultation.SESSION_ID, sessionId);
+						intent.putExtra(VideoConsultation.TOKEN, token);
+						intent.putExtra(VideoConsultation.VIDEO_API_KEY, videoApiKey);
+						
+						startActivity(intent);						
+					} catch (JSONException e) {
+						Log.e(TAG, e.getMessage());
+					}
 				}
 				@Override
 				public void onFailure(int responseCode) {
@@ -57,7 +73,8 @@ public class LoginActivity extends Activity {
 				@Override
 				public void onError(Exception e) {}
 			});
-
+			
+			api.connectToSession(mTxtLoginCode.getText().toString());
 		}
 	};
 	

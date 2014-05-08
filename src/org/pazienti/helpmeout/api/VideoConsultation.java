@@ -11,59 +11,26 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.os.AsyncTask;
-import android.text.Editable;
 
-public class VideoConsultation extends AsyncTask<Object, Void, JSONObject>{
-	private APICallbackListener callbackListener;
+public class VideoConsultation extends API{
+	public final static String SESSION_ID 		= "session_id";
+	public final static String TOKEN 			= "token";
+	public final static String VIDEO_API_KEY 	= "video_api_key";
 	
-	protected JSONObject doInBackground(Object... params) {
-		JSONObject response = null;
-		
-		HttpURLConnection connection = (HttpURLConnection)params[0];
-		
-		try {
-			connection.connect();
-			
-			if(connection.getResponseCode() == 	HttpURLConnection.HTTP_OK){
-				Reader reader = new InputStreamReader(connection.getInputStream());
-				
-				char[] byteResponse = new char[connection.getContentLength()];
-				
-				reader.read(byteResponse);
-				
-				response = new JSONObject(new String(byteResponse));
-			}else{
-				callbackListener.onFailure(connection.getResponseCode());
-			}
-		} catch (IOException e) {
-			callbackListener.onError(e);
-		} catch (JSONException e) {
-			callbackListener.onError(e);
-		}
-		
-		return response;
+	public VideoConsultation(APICallbackListener listener) {
+		super(listener);
 	}
 	
-	@Override
-	protected void onPostExecute(JSONObject result) {
-		callbackListener.onSuccess(result);
-	}
-	
-	
-	public void connectToSession(String pinCode, APICallbackListener listener){
-		URL apiUrl;
+	public void connectToSession(String pinCode){		
 		try {
-			apiUrl = new URL("http://www.pazienti.it/api/v1/video_consultations/" + pinCode);
+			URL apiUrl 						= new URL("http://www.pazienti.it/api/v1/video_consultations/" + pinCode);
 			HttpURLConnection connection	= (HttpURLConnection) apiUrl.openConnection();
 			
-			execute(connection, API.API_CONNECT_TO_SESSION, listener);
+			execute(connection);
 		} catch (MalformedURLException e) {
-			callbackListener.onError(e);
+			raiseAPIError(e);
 		} catch (IOException e) {
-			callbackListener.onError(e);
-		}
-		
-		
-		
+			raiseAPIError(e);
+		}		
 	}	
 }

@@ -1,5 +1,7 @@
 package org.pazienti.helpmeout.api;
 
+import java.net.URLConnection;
+
 import org.json.JSONObject;
 
 public abstract interface APICallbackListener {	
