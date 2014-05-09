@@ -74,10 +74,9 @@ public class MainActivity extends Activity {
             return null;
         }
 
-        @Override
+        @Override // Number of page on this Activity
         public int getCount() {
-            // Show 2 total pages.
-            return 2;
+            return 1;
         }
 
         @Override

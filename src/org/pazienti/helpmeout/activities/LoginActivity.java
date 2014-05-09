@@ -44,12 +44,12 @@ public class LoginActivity extends Activity {
 					InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
 					imm.hideSoftInputFromWindow(mTxtLoginCode.getWindowToken(), 0);
 					
-					try {
+					try {						
 						String sessionId 	= result.getString(VideoConsultation.SESSION_ID);
 						String token 		= result.getString(VideoConsultation.TOKEN);
-						String videoApiKey 	= result.getString(VideoConsultation.VIDEO_API_KEY);
+						String videoApiKey 	= result.getString(VideoConsultation.VIDEO_API_KEY);						
 						
-						Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+						Intent intent 		= new Intent(LoginActivity.this, MainActivity.class);
 						intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 						
 						intent.putExtra(HelpMeOut.FLAG_VIDEO_ACCESS_DONE, true);
