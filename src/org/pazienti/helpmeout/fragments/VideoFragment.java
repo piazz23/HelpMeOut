@@ -2,6 +2,7 @@ package org.pazienti.helpmeout.fragments;
 
 import org.pazienti.helpmeout.R;
 import org.pazienti.helpmeout.activities.LoginActivity;
+import org.pazienti.helpmeout.api.VideoConsultation;
 import org.pazienti.helpmeout.app.HelpMeOut;
 import org.pazienti.helpmeout.app.TokboxHandler;
 
@@ -24,7 +25,7 @@ public class VideoFragment extends Fragment{
         View rootView = inflater.inflate(R.layout.fragment_video, container, false);
         
         
-        if(!getActivity().getIntent().getBooleanExtra(HelpMeOut.FLAG_EXTRA_ACCESS_DONE, false)){
+        if(!getActivity().getIntent().getBooleanExtra(HelpMeOut.FLAG_VIDEO_ACCESS_DONE, false)){
         	Intent intent = new Intent(getActivity(), LoginActivity.class);
         	intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         	
@@ -38,8 +39,13 @@ public class VideoFragment extends Fragment{
 	public void onResume() {
 		super.onResume();
 		
-		if(tokbox == null && getActivity().getIntent().getBooleanExtra(HelpMeOut.FLAG_EXTRA_ACCESS_DONE, false)){
-			tokbox = new TokboxHandler(getActivity());
+		if(tokbox == null && getActivity().getIntent().getBooleanExtra(HelpMeOut.FLAG_VIDEO_ACCESS_DONE, false)){
+			String sessionId 	= getActivity().getIntent().getStringExtra(VideoConsultation.SESSION_ID);
+			String token		= getActivity().getIntent().getStringExtra(VideoConsultation.TOKEN);
+			String videoApiKey  = getActivity().getIntent().getStringExtra(VideoConsultation.VIDEO_API_KEY);
+			
+			
+			tokbox = new TokboxHandler(getActivity(), sessionId, token, videoApiKey);
 		}else if(tokbox != null && tokbox.getSession() != null){
 			tokbox.getSession().onResume();
 		}

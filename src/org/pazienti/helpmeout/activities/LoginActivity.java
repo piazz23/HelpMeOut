@@ -1,9 +1,5 @@
 package org.pazienti.helpmeout.activities;
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URLConnection;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.pazienti.helpmeout.R;
@@ -56,7 +52,7 @@ public class LoginActivity extends Activity {
 						Intent intent = new Intent(LoginActivity.this, MainActivity.class);
 						intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 						
-						intent.putExtra(HelpMeOut.FLAG_EXTRA_ACCESS_DONE, true);
+						intent.putExtra(HelpMeOut.FLAG_VIDEO_ACCESS_DONE, true);
 						intent.putExtra(VideoConsultation.SESSION_ID, sessionId);
 						intent.putExtra(VideoConsultation.TOKEN, token);
 						intent.putExtra(VideoConsultation.VIDEO_API_KEY, videoApiKey);

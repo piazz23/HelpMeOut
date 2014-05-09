@@ -1,16 +1,9 @@
 package org.pazienti.helpmeout.api;
 
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import android.os.AsyncTask;
 
 public class VideoConsultation extends API{
 	public final static String SESSION_ID 		= "session_id";

@@ -3,7 +3,6 @@ package org.pazienti.helpmeout.app;
 import org.pazienti.helpmeout.R;
 
 import android.app.Activity;
-import android.opengl.Visibility;
 import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -23,6 +22,10 @@ public class TokboxHandler implements Session.Listener, Publisher.Listener, Subs
 	private final String 		TAG = TokboxHandler.class.getSimpleName();
 	
 	// Tokbox variables
+	protected String 			mSessionId;
+	protected String 			mToken;
+	protected String 			mVideoApiKey;
+	
 	protected Session 			mSession;
 	protected Connection 		mConnection;
 	protected Publisher 		mPublisher;
@@ -34,11 +37,14 @@ public class TokboxHandler implements Session.Listener, Publisher.Listener, Subs
 	// Activity context
 	protected Activity			mContext;
 		
-	public TokboxHandler(Activity context){
+	public TokboxHandler(Activity context, String sessionId, String token, String videoApiKey){
 		mContext 					= context;
+		mSessionId					= sessionId;
+		mToken						= token;
+		mVideoApiKey				= videoApiKey;
 		
-		mSession 					= new Session(mContext, HelpMeOut.TOKBOX_SESSION_ID, this);
-		mSession.connect(HelpMeOut.TOKBOX_API_KEY, HelpMeOut.TOKBOX_TOKEN);
+		mSession 					= new Session(mContext, mSessionId, this);
+		mSession.connect(mToken, mVideoApiKey);
 		
 		mPublisherViewContainer 	= (RelativeLayout) mContext.findViewById(R.id.publisher_view);
 		mSubscriberViewContainer 	= (RelativeLayout) mContext.findViewById(R.id.subscriber_view);
