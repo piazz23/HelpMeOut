@@ -22,12 +22,12 @@ public class VideoFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_video, container, false);
         
-        if(true){
-        	Intent intent = new Intent(getActivity(), LoginActivity.class);
-        	intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        	
-        	startActivity(intent);
-        }
+//        if(true){
+//        	Intent intent = new Intent(getActivity(), LoginActivity.class);
+//        	intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//        	
+//        	startActivity(intent);
+//        }
         
         return rootView;
     }

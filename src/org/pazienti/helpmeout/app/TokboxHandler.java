@@ -23,22 +23,30 @@ public class TokboxHandler implements Session.Listener, Publisher.Listener, Subs
 	private final String 		TAG = TokboxHandler.class.getSimpleName();
 	
 	// Tokbox variables
+	protected String			mSessionId;
+	protected String 			mToken;
+	protected String 			mApiKey;
+	
 	protected Session 			mSession;
 	protected Connection 		mConnection;
 	protected Publisher 		mPublisher;
 	protected Subscriber 		mSubscriber;
 	
+	// Tokbox views conteiners
 	protected RelativeLayout 	mPublisherViewContainer;
 	protected RelativeLayout 	mSubscriberViewContainer;
 	
 	// Activity context
 	protected Activity			mContext;
 		
-	public TokboxHandler(Activity context){
+	public TokboxHandler(Activity context, String session, String token, String apiKey){
 		mContext 					= context;
+		mSessionId					= session;
+		mToken						= token;
+		mApiKey						= apiKey;
 		
-		mSession 					= new Session(mContext, HelpMeOut.TOKBOX_SESSION_ID, this);
-		mSession.connect(HelpMeOut.TOKBOX_API_KEY, HelpMeOut.TOKBOX_TOKEN);
+		mSession 					= new Session(mContext, mSessionId, this);
+		mSession.connect(mApiKey, mToken);
 		
 		mPublisherViewContainer 	= (RelativeLayout) mContext.findViewById(R.id.publisher_view);
 		mSubscriberViewContainer 	= (RelativeLayout) mContext.findViewById(R.id.subscriber_view);
