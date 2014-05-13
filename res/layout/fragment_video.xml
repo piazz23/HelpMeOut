@@ -24,14 +24,23 @@
    <RelativeLayout
        android:id="@+id/video_loading_view"
        android:layout_width="match_parent"
-       android:layout_height="match_parent" >
+       android:layout_height="match_parent"
+       android:background="@color/light_blue" >
+
+       <ImageView
+           android:id="@+id/backgroud"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:background="@drawable/bg_pazienti_color" />
 
        <ImageView
            android:id="@+id/login_layout_background"
-           android:layout_width="match_parent"
+           android:layout_width="wrap_content"
            android:layout_height="match_parent"
+           android:contentDescription="@android:string/untitled"
            android:scaleType="fitXY"
-           android:src="@drawable/bg_pazienti" android:contentDescription="@android:string/untitled"/>
+           android:src="@drawable/bg_pazienti"
+           android:layout_centerInParent="true" />
 
        <ProgressBar
            android:id="@+id/progressBar1"
@@ -47,8 +56,9 @@
            android:layout_height="wrap_content"
            android:layout_above="@+id/progressBar1"
            android:layout_centerHorizontal="true"
-           android:layout_marginBottom="33dp"
-           android:text="@string/txt_video_loading_label" />
+           android:layout_marginBottom="7dp"
+           android:text="@string/txt_video_loading_label"
+           android:textColor="@android:color/white" />
 
    </RelativeLayout>
 
