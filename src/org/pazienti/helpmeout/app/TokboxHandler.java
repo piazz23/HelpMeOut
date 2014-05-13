@@ -22,6 +22,8 @@ public class TokboxHandler implements Session.Listener, Publisher.Listener, Subs
 	private final String 		TAG = TokboxHandler.class.getSimpleName();
 	
 	// Tokbox variables
+	private boolean 			mConnected = false;
+	
 	protected String 			mSessionId;
 	protected String 			mToken;
 	protected String 			mVideoApiKey;
@@ -44,10 +46,6 @@ public class TokboxHandler implements Session.Listener, Publisher.Listener, Subs
 		mVideoApiKey				= videoApiKey;
 		
 		mSession 					= new Session(mContext, mSessionId, this);
-		mSession.connect(mToken, mVideoApiKey);
-		
-		mPublisherViewContainer 	= (RelativeLayout) mContext.findViewById(R.id.publisher_view);
-		mSubscriberViewContainer 	= (RelativeLayout) mContext.findViewById(R.id.subscriber_view);
 	}
 	
 	// Class getter methods
@@ -87,6 +85,28 @@ public class TokboxHandler implements Session.Listener, Publisher.Listener, Subs
             mSubscriberViewContainer.removeView(mSubscriber.getView());
             mSubscriber = null;
         }
+    }
+    
+    public void setView(RelativeLayout publisherViewContainer, RelativeLayout subscriberViewContainer){
+    	if(mPublisherViewContainer == null || mSubscriberViewContainer == null){
+    		mPublisherViewContainer 	= publisherViewContainer;
+    		mSubscriberViewContainer 	= subscriberViewContainer;
+    		
+    		startConnection();
+    	}
+    }
+    
+    public void startConnection(){
+    	if(!mConnected){
+    		mSession.connect(mVideoApiKey, mToken);
+    		mConnected = true;
+    	}else{
+    		Log.e(TAG, "Session already connected");
+    	}
+    }
+    
+    public boolean isReady(){
+    	return (mPublisherViewContainer != null && mSubscriberViewContainer != null);
     }
 
 	// Subscriber.Listener methods

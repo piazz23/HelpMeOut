@@ -3,6 +3,9 @@ package org.pazienti.helpmeout.activities;
 import java.util.Locale;
 
 import org.pazienti.helpmeout.R;
+import org.pazienti.helpmeout.api.VideoConsultation;
+import org.pazienti.helpmeout.app.HelpMeOut;
+import org.pazienti.helpmeout.app.TokboxHandler;
 import org.pazienti.helpmeout.fragments.MessagesFragment;
 import org.pazienti.helpmeout.fragments.VideoFragment;
 
@@ -17,22 +20,31 @@ import android.view.MenuItem;
 
 public class MainActivity extends Activity {
 
-    SectionsPagerAdapter mSectionsPagerAdapter;
+    public SectionsPagerAdapter mSectionsPagerAdapter;
 
-    ViewPager mViewPager;
+    public ViewPager 			mViewPager;
 
-    @Override
+	protected TokboxHandler 	mTokbox;
+
+	// Activity methods
+	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
 
-        // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+        
+        if(mTokbox == null && getIntent().getBooleanExtra(HelpMeOut.FLAG_VIDEO_ACCESS_DONE, false)){
+			String sessionId 	= getIntent().getStringExtra(VideoConsultation.SESSION_ID);
+			String token		= getIntent().getStringExtra(VideoConsultation.TOKEN);
+			String videoApiKey  = getIntent().getStringExtra(VideoConsultation.VIDEO_API_KEY);
+			
+			
+			mTokbox = new TokboxHandler(this, sessionId, token, videoApiKey);
+        }
     }
 
 
@@ -54,6 +66,15 @@ public class MainActivity extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+    
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        if (getTokbox() != null && getTokbox().getSession() != null) {
+        	getTokbox().getSession().disconnect();
+        }
     }
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
@@ -91,5 +112,11 @@ public class MainActivity extends Activity {
             return null;
         }
     }
+    
+    /** Main Activity methods */
+    // mTokbox getter
+    public TokboxHandler getTokbox() {
+		return mTokbox;
+	}    
 
 }
