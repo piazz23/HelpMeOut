@@ -13,7 +13,7 @@ public class HelpMeOut extends Application{
 //	public static final String TOKBOX_API_KEY			= "29529352";
 	
 	// APP CONSTANTS
-	public static final boolean SUBSCRIBE_TO_SELF = true;
+	public static final boolean SUBSCRIBE_TO_SELF = false;
 	
 	@Override
 	public void onCreate() {

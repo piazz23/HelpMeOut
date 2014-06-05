@@ -67,7 +67,9 @@ public class LoginActivity extends Activity {
 					Toast.makeText(LoginActivity.this, "Response: " + responseCode, Toast.LENGTH_LONG).show();
 				}
 				@Override
-				public void onError(Exception e) {}
+				public void onError(Exception e) {
+					Log.e(TAG, e.getMessage());
+				}
 			});
 			
 			api.connectToSession(mTxtLoginCode.getText().toString());
